@@ -1,0 +1,15 @@
+[
+  { "title": "Team Meeting", "date": "2025-06-12", "time": "10:00", "duration": "1h" },
+  { "title": "Client Call", "date": "2025-06-12", "time": "14:00", "duration": "30m" },
+  { "title": "Design Review", "date": "2025-06-13", "time": "11:00", "duration": "1h" },
+  { "title": "Sprint Planning", "date": "2025-07-05", "time": "09:00", "duration": "2h" },
+  { "title": "Online Class", "date": "2025-07-05", "time": "14:00", "duration": "3h" },
+  { "title": "Tech Talk", "date": "2025-07-20", "time": "16:00", "duration": "1.5h" },
+  { "title": "Preparation", "date": "2025-07-20", "time": "16:00", "duration": "2.5h" },
+  { "title": "Interview", "date": "2025-08-10", "time": "13:00", "duration": "1h" },
+  { "title": "Code Review", "date": "2025-08-18", "time": "15:00", "duration": "45m" },
+  { "title": "UX Testing", "date": "2025-09-02", "time": "10:30", "duration": "1h" },
+  { "title": "Project Kickoff", "date": "2025-09-10", "time": "09:00", "duration": "1h" },
+  { "title": "Release Day", "date": "2025-10-01", "time": "12:00", "duration": "1h" }
+]
+

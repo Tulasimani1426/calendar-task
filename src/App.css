@@ -1,38 +1,267 @@
-.App {
+body {
+  background: linear-gradient(135deg, #ece9e6, #ffffff);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 2rem;
+}
+
+.calendar {
+  max-width: 960px;
+  margin: auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.header h2 {
+  font-size: 1.75rem;
+  color: #333;
+}
+
+.header button {
+  background-color: #c965e5;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 2px solid #ce67eb;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.header button:hover {
+  box-shadow: 2px 1px 4px #633b6e;
+  transform: scale(0.95);
+  
+}
+
+
+
+.days-row, .row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.day {
+  font-weight: bold;
+  padding: 10px 0;
+  color: #555;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.cell {
+  min-height: 120px;
+  background-color: #fafafa;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s ease;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: flex-start;
+}
+
+.cell:hover {
+  background-color: #e3f2fd;
+  transform: scale(1.02);
+}
+
+.cell.today {
+  border: 2px solid #f9a806;
+  background-color: #fdf8e3;
+}
+
+.cell.selected {
+  border: 2px solid #673ab7;
+  background-color: #ede7f6;
+}
+
+.cell.disabled {
+  opacity: 0.5;
+}
+
+.number {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.event {
+  padding: 3px 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: white;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.selected-events {
+  margin-top: 2rem;
+  background-color: #f3e5f5;
+  border-left: 6px solid #ab47bc;
+  padding: 1rem;
+  border-radius: 8px;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.selected-events h3 {
+  margin-top: 0;
+  color: #6a1b9a;
+}
+
+.selected-events ul {
+  list-style: none;
+  padding: 0;
+}
+
+.selected-events li {
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 6px;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.event-chip {
+  padding: 4px 8px;
+  margin-top: 4px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  display: inline-block;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.cell.empty {
+  background-color: transparent;
+  border: none;
+  pointer-events: none;
+}
+.day.sunday {
+  color: red;
+  font-weight: bold;
+}
+.conflict-warning {
+  color: #d32f2f;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.cell.conflict {
+  border: 2px dashed #f44336;
+  background-color: #ffebee;
+}
+
+
+/* Layout fitting for different devices (can add if required)
+
+//Base layout for desktop
+
+.calendar {
+  max-width: 100%;
+  width: 95vw;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.days-row, .row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+// Adjust spacing for mobile/tablet
+
+@media (max-width: 768px) {
+  .calendar {
+    padding: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .header h2 {
+    font-size: 1.4rem;
+  }
+
+  .header button {
+    padding: 8px 12px;
+    font-size: 1rem;
+  }
+
+  .day {
+    font-size: 12px;
+  }
+
+  .number {
+    font-size: 14px;
+  }
+
+  .event {
+    font-size: 11px !important;
+  }
+
+  .cell {
+    min-height: 100px;
+    padding: 8px;
+  }
+
+  .selected-events li {
+    font-size: 13px;
   }
 }
+
+@media (max-width: 480px) {
+  .calendar {
+    width: 100vw;
+    padding: 1rem 0.5rem;
+  }
+
+  .row, .days-row {
+    gap: 6px;
+  }
+
+  .cell {
+    min-height: 90px;
+    padding: 6px;
+  }
+
+  .number {
+    font-size: 13px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .header button {
+    width: 100%;
+  }
+}
+
+*/
