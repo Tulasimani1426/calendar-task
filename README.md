@@ -36,7 +36,8 @@ npm install
 npm start
 
 ---
-## Author
+
+## Author Details
 
 - **Name**: Akkireddy Tulasimani  
 - **GitHub**: [@tulasimani1426](https://github.com/tulasimani1426)  
