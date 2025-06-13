@@ -10,6 +10,7 @@ function App() {
 
   const renderHeader = () => {
     return (
+      
       <div className="header">
         <button onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}>{'<'}</button>
         <h2>{format(currentMonth, 'MMMM yyyy')}</h2>
@@ -143,6 +144,7 @@ function App() {
 
   return (
     <div className="calendar">
+       <h1 className="main-heading" style={{textAlign:'center' , fontFamily: "cursive" , textShadow:"1px 1px 2px violet"}}> Calendar</h1>
       {renderHeader()}
       {renderDays()}
       {renderCells()}
